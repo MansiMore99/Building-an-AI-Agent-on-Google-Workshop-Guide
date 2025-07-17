@@ -2,11 +2,9 @@
 
 <div align="center">
   
-![Google Cloud Workshop Banner](<img width="1722" height="949" alt="image (1)" src="https://github.com/user-attachments/assets/ab7f135d-c0cd-46ab-b29a-576c580bc744" />)
-
 </div>
 
-<h1 align="center">🤖 Building AI Agents with GOOGLE Vertex AI 🤖</h1>
+<h1 align="center">🤖 Building AI Agents with GOOGLE 🤖</h1>
 
 <p align="center">
 This comprehensive workshop will guide you through creating powerful AI Agents with Google Cloud's Vertex AI Agent Builder. Master each feature while building production-ready, responsible AI solutions.
@@ -28,7 +26,7 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 ---
 
 <p align="center">
-<img width="800" alt="Vertex AI Agent Builder Screenshot" src="https://github.com/user-attachments/assets/003f0645-bf7d-4dce-b635-45d17e8394a9" />
+<img width="1722" height="949" alt="image (1)" src="https://github.com/user-attachments/assets/ee4773cd-7773-44cd-91d6-7abf0819f037" />
 </p>
 
 ---
