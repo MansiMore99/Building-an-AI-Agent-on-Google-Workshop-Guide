@@ -79,10 +79,10 @@ Our workshop implements APARAVI's robust security pipeline, ensuring your AI age
 <img width="1245" height="434" alt="image" src="https://github.com/user-attachments/assets/12e0b9f5-2d84-46e8-974f-b90ab1c922fa" />
 
 
-- **Data Classification**: Automatically identifies sensitive and confidential information
-- **Redaction Capabilities**: Masks or removes sensitive data before it reaches AI models
-- **Access Control**: Granular permissions for authorized access only
-- **Audit Trails**: Complete visibility into information access
+- **Drag & Drop Upload**
+- **Parser** — Extracts raw text
+- **Text Classification** — Detects contact info, names, titles
+- **Text Anonymization** — Redacts sensitive fields (e.g., emails, phone numbers)
 
 By integrating APARAVI's security pipeline with Google Cloud AI, you create responsible AI systems that protect sensitive information while delivering valuable assistance to users.
 
