@@ -26,6 +26,9 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 
 ---
 
+Here is a YouTube video showing you how to get it set up in the account for **Free Credits**: 
+[![GitHub](https://img.shields.io/badge/GitHub-Chatbot%20Repo-black?logo=github)](https://youtu.be/dR-NrgMTADs)
+
 ## 📋 Table of Contents
 
 <div align="center">
@@ -71,6 +74,8 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 ## 🔒 APARAVI's Pipeline for Confidential Information Management
 
 Our workshop implements APARAVI's robust security pipeline, ensuring your AI agent knows exactly what information it's authorized to share:
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9bc696c5-33bf-49de-831d-97790cbcb6df" />
 
 - **Data Classification**: Automatically identifies sensitive and confidential information
 - **Redaction Capabilities**: Masks or removes sensitive data before it reaches AI models
