@@ -1,12 +1,5 @@
-# 🚀 Google Cloud Workshop: Building AI Agents
 
-<div align="center">
-
-![Google Cloud Workshop Banner](https://storage.googleapis.com/gweb-cloudblog-publish/images/GC_training_orchestration.max-2000x2000.jpg)
-
-</div>
-
-> ## *"With great AI power comes great responsibility. That's why our agent doesn't just answer — It knows what it's **allowed to reveal**." Along with **APARAVI**.*
+ ### *"With great AI power comes great responsibility. That's why our agent doesn't just answer — It knows what it's **allowed to reveal**." Along with **APARAVI**.*
 
 <div align="center">
 
@@ -48,13 +41,18 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 
 </div>
 
-## 🚀 Workshop Features
+## ✅ Workshop Takeaways:
 
-- **Hands-on Learning**: Build real-world AI agents with step-by-step guidance
-- **Expert Tips**: Best practices from Google Cloud specialists
-- **Interactive Components**: Code along with provided Jupyter notebooks
-- **Security Focus**: Learn to create agents that responsibly handle sensitive information
-- **Deployment Ready**: Take your agent from concept to production
+* Master APARAVI’s data anonymization pipeline
+* Build smart, secure chatbots using Vertex AI + Dialogflow CX
+* Deploy privacy-safe solutions directly to the web
+* Learn real strategies to keep AI answers compliant and respectful
+* When a candidate asks about a specific recruiter, the assistant can:
+    ✅ Confirm the recruiter works at Google
+    ✅ Share their department and general role
+    ✅ Provide a masked contact method
+    ❌ Never reveal complete personal contact information
+    ❌ Never expose private company information
 
 ## 💎 Why Vertex AI Agent Builder?
 
@@ -87,7 +85,7 @@ By integrating APARAVI's security pipeline with Google Cloud AI, you create resp
 
 ### 🌟 Join us on this AI journey and transform how you build intelligent applications! 🌟
 
-[Get Started Now](#before-you-begin) | [View Documentation](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform) | [Join Community](https://www.youtube.com/c/GoogleCloudTech)
+[Get Started Now](#before-you-begin) | [View Documentation](https://www.notion.so/Google-Cloud-Workshop-guide-23060667b8088034b3e3c6ec9aa62bf6) | [Join Community](https://www.youtube.com/c/GoogleCloudTech)
 
 </div>
 
@@ -120,23 +118,41 @@ We recommend following this learning path:
 - [APARAVI Documentation](https://www.aparavi.com/resources)
 - [AI Ethics Guidelines](https://ai.google/principles/)
 
-## 🤝 Support and Contact
+### 🚀 Join the Workshop:
 
-If you encounter any issues during the workshop, please:
-- Check the FAQ section in each guide
-- Raise an issue in this GitHub repository
-- Contact the workshop facilitator for assistance
+We’re going beyond the demo. You’ll build the future of secure recruiting chatbots. 👉 [Register now](https://www.meetup.com/bay-area-women-in-machine-learning-and-data-science/events/309067987/) on Meetup!
 
-## 📝 License
+## Similar Projects & Resources
 
-This workshop material is provided under [appropriate license information].
+If you enjoyed this walkthrough, check out these related builds:
+
+- [![GitHub](https://img.shields.io/badge/GitHub-Chatbot%20Repo-black?logo=github)](https://github.com/MansiMore99/Fitness-ChatBot-using-LLM-on-Google-Cloud-Platform)  
+- [![Blog](https://img.shields.io/badge/Blog-Tutorial%20Post-blue?logo=medium)](https://medium.com/@mansi.more943/chatbot-for-website-using-vertex-ai-agent-builder-on-google-cloud-platform-41737d030a42)  
+- [![YouTube](https://img.shields.io/badge/YouTube-Demo%20Video-red?logo=youtube)](https://youtu.be/Tz4grh6GTXs?si=PYESvK6-UKZkW5bQ)  
 
 ---
 
-<div align="center">
+#### 📬 Let’s Connect
+Have feedback, questions, or want to contribute? Feel free to reach out or fork the project!
+Feel free to reach out and follow me on social media:
 
-*We're excited to help you build your AI agent! Remember, the key to a successful AI implementation is responsible development and deployment.*
+<p align="center">
+  <a href="https://www.linkedin.com/in/mansimore9/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://github.com/MansiMore99">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  <a href="https://medium.com/@mansi.more943">
+    <img src="https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white" alt="Medium" />
+  </a>
+  <a href="https://x.com/MansiMore99">
+    <img src="https://img.shields.io/badge/X-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="X (Twitter)" />
+  </a>
+  <a href="https://www.youtube.com/@tech_girl-m9">
+    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" />
+  </a>
+</p>
 
-**Join us and transform the future with Google Cloud and AI!**
+<sub>© 2025 Google LLC.</sub>
 
-</div>
