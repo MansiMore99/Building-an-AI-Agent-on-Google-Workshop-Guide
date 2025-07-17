@@ -1,33 +1,98 @@
-## Building an AI Agent with Google Cloud — Workshop Guide 🚀
-This repository contains all the materials and guides you'll need to successfully build and deploy your own AI chatbot agent on Google Cloud.
----
-
-# 🚀 Google Cloud Workshop: Unleash the Power of AI Agents! 🤖
-
-<img width="1712" height="948" alt="image" src="https://github.com/user-attachments/assets/b72856a8-e0c5-450a-a6a0-c7ed34efdb33" />
+# ✨ Mastering AI Agents with Google Vertex AI ✨
 
 <div align="center">
-
-![Google Cloud Workshop Banner](https://storage.googleapis.com/gweb-cloudblog-publish/images/GC_training_orchestration.max-2000x2000.jpg)
+  
+![Google Cloud Workshop Banner](<img width="1722" height="949" alt="image (1)" src="https://github.com/user-attachments/assets/ab7f135d-c0cd-46ab-b29a-576c580bc744" />)
 
 </div>
 
-> ## *"With great AI power comes great responsibility. That's why our agent doesn't just answer — It knows what it's **allowed to reveal**." Along with **APARAVI**.*
+<h1 align="center">🤖 Building AI Agents with GOOGLE Vertex AI 🤖</h1>
 
-## ✨ Workshop Overview
+<p align="center">
+This comprehensive workshop will guide you through creating powerful AI Agents with Google Cloud's Vertex AI Agent Builder. Master each feature while building production-ready, responsible AI solutions.
+</p>
 
-Welcome to our **immersive AI Agent Workshop**! This repository contains all the materials and guides you'll need to successfully build and deploy your own AI chatbot agent on Google Cloud. Get ready for an exciting journey into the world of responsible AI development!
+<p align="center">
+<img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="Google Cloud" />
+<img src="https://img.shields.io/badge/Vertex%20AI-0F9D58?style=for-the-badge&logo=google&logoColor=white" alt="Vertex AI" />
+<img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" alt="Jupyter Notebook" />
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+</p>
 
-## 📚 Workshop Materials
+<div align="center">
+  
+> *"Build AI agents that don't just respond — they understand exactly what information they're authorized to share."*
 
-### 📘 1. [Step-by-Step to Download Secure Files](https://www.notion.so/Step-by-Step-to-download-Secure-file)
-Comprehensive guide for securely downloading and managing files needed for AI agent development.
+</div>
 
-### 📗 2. [How to Build a Chatbot on Google Cloud](https://www.notion.so/How-to-Build-a-Chatbot-on-Google-Cloud)
-Master the fundamentals of creating intelligent chatbots using Google Cloud's powerful services.
+---
 
-### 📙 3. [Make Your AI Agent Live: Deploy an AI Chatbot on Your Website](https://www.notion.so/Make-your-AI-agent-live-Deploy-an-AI-chatbot-on-your-website)
-Take your creation from development to production with our expert deployment guide.
+<p align="center">
+<img width="800" alt="Vertex AI Agent Builder Screenshot" src="https://github.com/user-attachments/assets/003f0645-bf7d-4dce-b635-45d17e8394a9" />
+</p>
+
+---
+
+## 📋 Table of Contents
+
+<div align="center">
+  
+| 📚 Workshop Modules | 🔧 Technical Resources |
+|:-------------------:|:---------------------:|
+| [📘 Before You Begin](#before-you-begin) | [🔌 API Documentation](#api-docs) |
+| [🎮 Designing Your First AI Agent](#first-agent) | [🧰 Code Samples](#code-samples) |
+| [🧠 Agent Mode Spotlight](#agent-mode) | [📊 Best Practices](#best-practices) |
+| [👨‍💻 Step-by-Step Codelab](#codelab) | [⚙️ Troubleshooting](#troubleshooting) |
+| [🗄️ Data Store Setup](#data-store) | [🛡️ Security Guidelines](#security) |
+| [🔍 Similar Projects & Resources](#resources) | [🌐 Community Support](#community) |
+
+</div>
+
+## 🚀 Workshop Features
+
+- **Hands-on Learning**: Build real-world AI agents with step-by-step guidance
+- **Expert Tips**: Best practices from Google Cloud specialists
+- **Interactive Components**: Code along with provided Jupyter notebooks
+- **Security Focus**: Learn to create agents that responsibly handle sensitive information
+- **Deployment Ready**: Take your agent from concept to production
+
+## 💎 Why Vertex AI Agent Builder?
+
+<div align="center">
+  
+| Feature | Benefit |
+|:-------:|:-------:|
+| 🧩 Modular Design | Easily customize and extend your AI agents |
+| 🔄 RAG Support | Implement Retrieval Augmented Generation with ease |
+| 🔒 Security Controls | Fine-grained permissions and data access management |
+| 📱 Multi-platform | Deploy across web, mobile, and chat applications |
+| 📈 Analytics | Comprehensive usage metrics and performance insights |
+
+</div>
+
+---
+
+<div align="center">
+
+### 🌟 Join us on this AI journey and transform how you build intelligent applications! 🌟
+
+[Get Started Now](#before-you-begin) | [View Documentation](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform) | [Join Community](https://www.youtube.com/c/GoogleCloudTech)
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🔧 Getting Started
 
