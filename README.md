@@ -119,6 +119,7 @@ We recommend following this learning path:
 - [AI Ethics Guidelines](https://ai.google/principles/)
 
 ### 🚀 Join the Workshop:
+<img width="686" height="386" alt="Building AI Agents with GOOGLE’s Vertex AI Agent Builder" src="https://github.com/user-attachments/assets/5355379a-070e-4b4b-b688-65807008e0af" />
 
 We’re going beyond the demo. You’ll build the future of secure recruiting chatbots. 👉 [Register now](https://www.meetup.com/bay-area-women-in-machine-learning-and-data-science/events/309067987/) on Meetup!
 
