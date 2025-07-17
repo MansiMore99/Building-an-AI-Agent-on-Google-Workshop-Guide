@@ -76,6 +76,8 @@ Here is a YouTube video showing you how to get it set up in the account for **Fr
 Our workshop implements APARAVI's robust security pipeline, ensuring your AI agent knows exactly what information it's authorized to share:
 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9bc696c5-33bf-49de-831d-97790cbcb6df" />
+<img width="1245" height="434" alt="image" src="https://github.com/user-attachments/assets/12e0b9f5-2d84-46e8-974f-b90ab1c922fa" />
+
 
 - **Data Classification**: Automatically identifies sensitive and confidential information
 - **Redaction Capabilities**: Masks or removes sensitive data before it reaches AI models
