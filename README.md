@@ -1,9 +1,9 @@
 
- ### *"With great AI power comes great responsibility. That's why our agent doesn't just answer — It knows what it's **allowed to reveal**." Along with **APARAVI**.*
+ ### "With great AI power comes great responsibility. That's why our agent doesn't just answer — It knows what it's **allowed to reveal**." Along with **APARAVI**.
 
 <div align="center">
 
-# 🤖 Building AI Chatbot with GOOGLE for Google 🤖
+# 🤖 Building an AI Agent with Google for Google! 🤖
 
 This comprehensive workshop will guide you through creating powerful AI Agents with Google Cloud's Vertex AI Agent Builder. Master each feature while building production-ready, responsible AI solutions.
 
