@@ -1,24 +1,26 @@
-# ✨ Mastering AI Agents with Google Vertex AI ✨
+# 🚀 Google Cloud Workshop: Building AI Agents
 
 <div align="center">
-  
+
+![Google Cloud Workshop Banner](https://storage.googleapis.com/gweb-cloudblog-publish/images/GC_training_orchestration.max-2000x2000.jpg)
+
 </div>
 
-<h1 align="center">🤖 Building AI Agents with GOOGLE 🤖</h1>
+> ## *"With great AI power comes great responsibility. That's why our agent doesn't just answer — It knows what it's **allowed to reveal**." Along with **APARAVI**.*
 
-<p align="center">
+<div align="center">
+
+# 🤖 Building AI Agents with GOOGLE 🤖
+
 This comprehensive workshop will guide you through creating powerful AI Agents with Google Cloud's Vertex AI Agent Builder. Master each feature while building production-ready, responsible AI solutions.
-</p>
 
-<p align="center">
+<p>
 <img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="Google Cloud" />
 <img src="https://img.shields.io/badge/Vertex%20AI-0F9D58?style=for-the-badge&logo=google&logoColor=white" alt="Vertex AI" />
 <img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" alt="Jupyter Notebook" />
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
 </p>
 
-<div align="center">
-  
 > *"Build AI agents that don't just respond — they understand exactly what information they're authorized to share."*
 
 </div>
@@ -34,15 +36,15 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 ## 📋 Table of Contents
 
 <div align="center">
-  
+
 | 📚 Workshop Modules | 🔧 Technical Resources |
 |:-------------------:|:---------------------:|
-| [📘 Before You Begin](#before-you-begin) | [🔌 API Documentation](#api-docs) |
-| [🎮 Designing Your First AI Agent](#first-agent) | [🧰 Code Samples](#code-samples) |
-| [🧠 Agent Mode Spotlight](#agent-mode) | [📊 Best Practices](#best-practices) |
-| [👨‍💻 Step-by-Step Codelab](#codelab) | [⚙️ Troubleshooting](#troubleshooting) |
-| [🗄️ Data Store Setup](#data-store) | [🛡️ Security Guidelines](#security) |
-| [🔍 Similar Projects & Resources](#resources) | [🌐 Community Support](#community) |
+| 📘 Before You Begin | 🔌 API Documentation |
+| 🎮 Designing Your First AI Agent | 🧰 Code Samples |
+| 🧠 Agent Mode Spotlight | 📊 Best Practices |
+| 👨‍💻 Step-by-Step Codelab | ⚙️ Troubleshooting |
+| 🗄️ Data Store Setup | 🛡️ Security Guidelines |
+| 🔍 Similar Projects & Resources | 🌐 Community Support |
 
 </div>
 
@@ -57,7 +59,7 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 ## 💎 Why Vertex AI Agent Builder?
 
 <div align="center">
-  
+
 | Feature | Benefit |
 |:-------:|:-------:|
 | 🧩 Modular Design | Easily customize and extend your AI agents |
@@ -68,6 +70,17 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 
 </div>
 
+## 🔒 APARAVI's Pipeline for Confidential Information Management
+
+Our workshop implements APARAVI's robust security pipeline, ensuring your AI agent knows exactly what information it's authorized to share:
+
+- **Data Classification**: Automatically identifies sensitive and confidential information
+- **Redaction Capabilities**: Masks or removes sensitive data before it reaches AI models
+- **Access Control**: Granular permissions for authorized access only
+- **Audit Trails**: Complete visibility into information access
+
+By integrating APARAVI's security pipeline with Google Cloud AI, you create responsible AI systems that protect sensitive information while delivering valuable assistance to users.
+
 ---
 
 <div align="center">
@@ -77,20 +90,6 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 [Get Started Now](#before-you-begin) | [View Documentation](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform) | [Join Community](https://www.youtube.com/c/GoogleCloudTech)
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 🔧 Getting Started
 
@@ -109,20 +108,11 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 
 We recommend following this learning path:
 
-### 🌱 Day 1: Setup and Fundamentals
-- Environment setup
-- Introduction to Google Cloud AI services
-- Understanding AI agent architecture
+### 🌱 Step 1: [Step-by-Step to download Secure** file](https://www.notion.so/Step-by-Step-to-download-Secure-file-23360667b8088000bab7da580b56637e)
 
-### 🏗️ Day 2: Building Your Chatbot
-- Implementing core chatbot functionality
-- Integrating with Google Cloud services
-- Testing and refining your chatbot
+### 🏗️ Step 2: [Building a Chatbot on Google Cloud](https://www.notion.so/How-to-Build-a-Chatbot-on-Google-Cloud-23360667b808802fb9d1d941ab30125a)
 
-### 🚀 Day 3: Deployment and Security
-- Deploying your chatbot to a website
-- Implementing security best practices
-- Monitoring and maintaining your AI agent
+### 🚀 Step 3: [Make your AI agent live: Deploy an AI chatbot on own website](https://www.notion.so/Make-your-AI-agent-live-Deploy-an-AI-chatbot-on-own-website-23060667b80880cdb067c312d9846c7c)
 
 ## 📚 Additional Resources
 
