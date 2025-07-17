@@ -27,7 +27,7 @@ This comprehensive workshop will guide you through creating powerful AI Agents w
 ---
 
 Here is a YouTube video showing you how to get it set up in the account for **Free Credits**: 
-[![GitHub](https://img.shields.io/badge/GitHub-Chatbot%20Repo-black?logo=github)](https://youtu.be/dR-NrgMTADs)
+[![GitHub](https://img.shields.io/badge/Google-Cloud-workshop-credit%20Repo-black?logo=github)](https://youtu.be/dR-NrgMTADs)
 
 ## 📋 Table of Contents
 
