@@ -1,0 +1,30 @@
+AI Engineer Interview Questions
+
+--- Technical Questions (12) ---
+
+1. What is the difference between verification and validation in software testing?
+2. Can you explain the different types of testing (unit, integration, system, regression, etc.) and when you would use each?
+3. How do you decide which test cases to automate?
+4. Write a sample test case for the login page of a web application.
+5. Describe a time when you found a critical bug. How did you document and communicate it?
+6. What is black-box testing? Provide an example.
+7. How do you perform API testing? Which tools do you use?
+8. What is the difference between severity and priority? Give examples.
+9. What experience do you have with test automation frameworks? (e.g., Selenium, Cypress, Appium)
+10. How would you handle a situation where developers dispute a reported defect?
+11. What are your strategies for testing mobile applications across different devices and platforms?
+12. What is a Test Plan? What are the key components?
+
+--- HR/Non-Technical Questions (10) ---
+
+1. Tell us about yourself and your background in Quality Assurance.
+2. Why do you want to work with our company?
+3. What do you know about our products or services?
+4. How do you handle tight deadlines and pressure?
+5. How do you deal with receiving negative feedback from a manager or peer?
+6. Describe a time you resolved a conflict in your team.
+7. How do you keep yourself updated with industry trends and new technologies?
+8. What does teamwork mean to you, and how do you contribute to a positive team environment?
+9. Where do you see your career in three years?
+10. Do you have any questions for us?
+
