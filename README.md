@@ -3,7 +3,7 @@
 
 <div align="center">
 
-# 🤖 Building AI Agents with GOOGLE 🤖
+# 🤖 Building AI Chatbot with GOOGLE for Google 🤖
 
 This comprehensive workshop will guide you through creating powerful AI Agents with Google Cloud's Vertex AI Agent Builder. Master each feature while building production-ready, responsible AI solutions.
 
