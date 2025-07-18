@@ -1,6 +1,3 @@
-
- ### "With great AI power comes great responsibility. That's why our agent doesn't just answer — It knows what it's **allowed to reveal**." Along with **APARAVI**.
-
 <div align="center">
 
 # 🤖 Building an AI Agent with Google for Google! 🤖
