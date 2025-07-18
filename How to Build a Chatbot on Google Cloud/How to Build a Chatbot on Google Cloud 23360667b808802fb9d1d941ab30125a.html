@@ -1,0 +1,704 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>How to Build a Chatbot on Google Cloud</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="23360667-b808-802f-b9d1-d941ab30125a" class="page sans"><header><h1 class="page-title">How to Build a Chatbot on Google Cloud</h1><p class="page-description"></p></header><div class="page-body"><hr id="23360667-b808-8069-b595-db0be165f574"/><hr id="23360667-b808-80cb-b913-d6493df8d94a"/><figure id="23360667-b808-80e1-966b-d5e4b3616940" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image.png"><img style="width:3100px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image.png"/></a></figure><h1 id="23360667-b808-8079-957f-c0f0a9696d9b" class="">1. Introduction</h1><p id="23360667-b808-8032-904c-ff3df945ed4c" class="">Welcome to this workshop on building AI Agents with Google Cloud&#x27;s Vertex AI Agent Builder. This guide will walk you through the process step-by-step, explaining each component along the way.</p><h2 id="23360667-b808-80e4-bc36-f594cc31dc49" class="">Prerequisites</h2><ul id="23360667-b808-8039-9f04-fa7d44e27e98" class="bulleted-list"><li style="list-style-type:disc">A Google Cloud account</li></ul><ul id="23360667-b808-8036-9164-d064fff10475" class="bulleted-list"><li style="list-style-type:disc">Basic understanding of <a href="https://cloud.google.com/ai/generative-ai">Generative AI concepts</a></li></ul><ul id="23360667-b808-8054-9fe7-cd7a9492c04e" class="bulleted-list"><li style="list-style-type:disc">Familiarity with <a href="https://cloud.google.com/dialogflow/vertex/docs/concept/agents">AI Agent fundamentals</a></li></ul><h2 id="23360667-b808-801c-bc8b-f956c257eb1c" class="">What You&#x27;ll Learn</h2><ul id="23360667-b808-80bf-aa5e-e449d011fe35" class="bulleted-list"><li style="list-style-type:disc">Creating a cloud storage bucket for your data</li></ul><ul id="23360667-b808-80ef-a879-e00cb1125983" class="bulleted-list"><li style="list-style-type:disc">Building an AI Agent using Vertex AI Agent Builder</li></ul><ul id="23360667-b808-80a2-accb-cb3df24b08a7" class="bulleted-list"><li style="list-style-type:disc">Configuring your agent with custom instructions</li></ul><ul id="23360667-b808-801b-817d-f752c322d4c6" class="bulleted-list"><li style="list-style-type:disc">Connecting your agent to data sources</li></ul><h3 id="23360667-b808-80f3-bc53-cd749634d880" class=""><mark class="highlight-teal"><strong>Open </strong></mark><mark class="highlight-red"><strong><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;followup=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;ifkv=AdBytiP7j8FanVC9KNrYj3Flxd8X_aLWM1MXn2EdaXgja7ll1wr4UNMC5nefshGHt1aY2yUQi_QFxw&amp;osid=1&amp;passive=1209600&amp;service=cloudconsole&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;dsh=S-1641519194%3A1752741043704113">Google</a></strong></mark><mark class="highlight-teal"><strong><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;followup=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;ifkv=AdBytiP7j8FanVC9KNrYj3Flxd8X_aLWM1MXn2EdaXgja7ll1wr4UNMC5nefshGHt1aY2yUQi_QFxw&amp;osid=1&amp;passive=1209600&amp;service=cloudconsole&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;dsh=S-1641519194%3A1752741043704113"> </a></strong></mark><mark class="highlight-yellow"><strong><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;followup=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;ifkv=AdBytiP7j8FanVC9KNrYj3Flxd8X_aLWM1MXn2EdaXgja7ll1wr4UNMC5nefshGHt1aY2yUQi_QFxw&amp;osid=1&amp;passive=1209600&amp;service=cloudconsole&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;dsh=S-1641519194%3A1752741043704113">Cloud</a></strong></mark><mark class="highlight-teal"><strong><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;followup=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;ifkv=AdBytiP7j8FanVC9KNrYj3Flxd8X_aLWM1MXn2EdaXgja7ll1wr4UNMC5nefshGHt1aY2yUQi_QFxw&amp;osid=1&amp;passive=1209600&amp;service=cloudconsole&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;dsh=S-1641519194%3A1752741043704113"> </a></strong></mark><mark class="highlight-blue"><strong><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;followup=https%3A%2F%2Fconsole.cloud.google.com%2F&amp;ifkv=AdBytiP7j8FanVC9KNrYj3Flxd8X_aLWM1MXn2EdaXgja7ll1wr4UNMC5nefshGHt1aY2yUQi_QFxw&amp;osid=1&amp;passive=1209600&amp;service=cloudconsole&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;dsh=S-1641519194%3A1752741043704113">Console</a></strong></mark><mark class="highlight-blue"><strong>.</strong></mark></h3><h1 id="23360667-b808-8012-8f4c-c09adffa5fbe" class="">2. Setting Up Google Cloud Storage</h1><p id="23360667-b808-8025-90c9-cd7ef39e60dc" class=""><strong>Step 1: Create a storage bucket</strong></p><ul id="23360667-b808-803d-ada7-e0bb0c5463d5" class="bulleted-list"><li style="list-style-type:disc">Navigate to <a href="https://console.cloud.google.com/storage">Google Cloud Storage</a></li></ul><ul id="23360667-b808-8035-8dcd-ca9153496dce" class="bulleted-list"><li style="list-style-type:disc">Click on <strong>&#x27;Create Bucket&#x27;</strong> button</li></ul><figure id="23360667-b808-808d-9822-e9f437e563a4" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%201.png"><img style="width:2928px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%201.png"/></a></figure><p id="23360667-b808-807d-9345-e05fd0f1dea1" class=""><strong>Step 2: Configure your bucket</strong></p><ul id="23360667-b808-80e9-81a8-dae46cde2339" class="bulleted-list"><li style="list-style-type:disc">Enter a unique name for your bucket (lowercase letters only, no spaces)</li></ul><ul id="23360667-b808-80f9-a3e3-ffc950103d23" class="bulleted-list"><li style="list-style-type:disc">Select <strong>Multi-region</strong> for Location type (ensure your agent uses the same region)</li></ul><ul id="23360667-b808-80f4-a360-c4d3fd2fe720" class="bulleted-list"><li style="list-style-type:disc">Leave other settings as default and click through to <strong>Create</strong></li></ul><ul id="23360667-b808-80af-98c9-cb3d84adad95" class="bulleted-list"><li style="list-style-type:disc">Confirm the creation when prompted</li></ul><figure id="23360667-b808-8050-8ffc-cf1ecdc63e85" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%202.png"><img style="width:2892px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%202.png"/></a></figure><hr id="23360667-b808-80ad-aaa2-ce0009ab0a8b"/><div id="23360667-b808-80f0-9ba2-c3f0c1273103" class="column-list"><div id="23360667-b808-80b4-b700-fbcd61619169" style="width:100%" class="column"><figure id="89cebb0f-63e2-4387-a136-a56214c84d03" class="image" style="text-align:left"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%203.png"><img style="width:240px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%203.png"/></a></figure><hr id="23360667-b808-8044-8106-df63553349a9"/></div><div id="23360667-b808-804c-8fe3-e5dcdb139481" style="width:100%" class="column"><p id="23360667-b808-803f-b975-ee76d37c33f8" class=""><strong>Step 3: Upload your data</strong></p><ul id="23360667-b808-80bf-90fd-f143485ec261" class="bulleted-list"><li style="list-style-type:disc">Click the <strong>Upload</strong> button to add your dataset folder. (</li></ul><p id="23460667-b808-802c-802f-eea0be9422d4" class="">
+</p><ul id="23360667-b808-80a8-af60-f8e62fad7a27" class="bulleted-list"><li style="list-style-type:disc">This data will be used to train your AI agent. </li></ul></div></div><div id="23360667-b808-806e-9e04-f691ced5a3b4" class="column-list"><div id="23360667-b808-80d6-8612-e5960331d7a5" style="width:100%" class="column"><p id="23360667-b808-8050-821b-c42fd6edd22a" class=""><strong>Step 4: Verify the upload</strong></p><ul id="23360667-b808-80c6-b00a-df8d845dd2af" class="bulleted-list"><li style="list-style-type:disc">Ensure your data appears in the bucket</li></ul><ul id="23360667-b808-8094-9fbc-dcf1148134e3" class="bulleted-list"><li style="list-style-type:disc">You have now successfully stored your training data on Google Cloud</li></ul></div><div id="23360667-b808-8097-a39b-daa0987e9dab" style="width:100%" class="column"><figure id="f66e5015-1226-4130-8cea-47114acd1af2" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%204.png"><img style="width:384px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%204.png"/></a></figure></div></div><h1 id="23360667-b808-8051-af7d-dafd075d56c1" class="">3. Creating an AI Agent with Vertex AI</h1><p id="23360667-b808-80e1-a708-e6d3e3f61cfd" class="">Now we&#x27;ll create an AI agent that can use your uploaded data.</p><p id="23360667-b808-803f-99dd-f057d5a27ee9" class=""><strong>Step 1: Access Vertex AI</strong></p><ul id="23360667-b808-8081-a53d-f8737c9091ef" class="bulleted-list"><li style="list-style-type:disc">Go to <a href="https://console.cloud.google.com/vertex-ai/dashboard">Vertex AI Dashboard</a></li></ul><ul id="23360667-b808-8095-9fe4-f223147624ae" class="bulleted-list"><li style="list-style-type:disc">If prompted, click <strong>CONTINUE AND ACTIVATE THE API</strong></li></ul><figure id="c52944f0-c639-4d74-a564-92a89fd1039c" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%205.png"><img style="width:3364px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%205.png"/></a></figure><p id="23360667-b808-80f9-9992-dfdff4f9d072" class=""><strong>Step 2: Navigate to Vertex AI Search</strong></p><ul id="23360667-b808-8015-9fa3-f0716fc69ed9" class="bulleted-list"><li style="list-style-type:disc">Click on <a href="https://console.cloud.google.com/vertex-ai/search">Vertex AI Search</a> in the sidebar</li></ul><ul id="23360667-b808-8004-8f2d-e5d7ed84d357" class="bulleted-list"><li style="list-style-type:disc">Click the <strong>See All</strong> button on the right side</li></ul><figure id="23360667-b808-8083-b106-c28edd1f8f34" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%206.png"><img style="width:576px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%206.png"/></a></figure><ul id="23360667-b808-804d-bec9-db5b37c5ee92" class="bulleted-list"><li style="list-style-type:disc">You&#x27;ll be taken to the App Creation page</li></ul><figure id="23360667-b808-8001-bdca-f9576d08f38f" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%207.png"><img style="width:528px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%207.png"/></a></figure><ul id="23360667-b808-8065-8d2d-ee0b08166522" class="bulleted-list"><li style="list-style-type:disc">Click on the <strong>CREATE A NEW APP</strong> button</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23360667-b808-80fe-8aa4-f7a36195e043" class="code"><code class="language-JavaScript">Note:
+
+1. A new tab for Dialogflow Conversational Agents will open
+
+2. If prompted to choose a Google Cloud Project, select the project 
+   associated with your account
+
+3. If using a new account, you may need to enable the Dialogflow API</code></pre><figure id="23360667-b808-8030-ba3a-d127f1790b8f" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%208.png"><img style="width:624px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%208.png"/></a></figure><ul id="23360667-b808-8017-b4d2-f102980cd940" class="bulleted-list"><li style="list-style-type:disc">If needed, enable the API manually by visiting the <a href="https://console.cloud.google.com/apis/api/dialogflow.googleapis.com">API page</a></li></ul><ul id="23360667-b808-8075-a8f1-e3ca068933c3" class="bulleted-list"><li style="list-style-type:disc">In the Dialogflow page, click <strong>Create Agent</strong></li></ul><figure id="23360667-b808-8041-85e9-cbc7846fd2a8" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%209.png"><img style="width:528px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%209.png"/></a></figure><p id="23360667-b808-80a3-bc17-e83a9881e82c" class=""><strong>Step 3: Configure your agent</strong></p><ul id="23360667-b808-80a1-88cd-e64a82e428b8" class="bulleted-list"><li style="list-style-type:disc">Enter the required information:</li></ul><ul id="23360667-b808-8025-8fea-e385a18a201d" class="bulleted-list"><li style="list-style-type:disc">Company name (e.g., &quot;YourCompany&quot;)</li></ul><ul id="23360667-b808-8012-a127-c255df3d1adf" class="bulleted-list"><li style="list-style-type:disc">Agent name (e.g., &quot;CustomerSupportAgent&quot;)</li></ul><ul id="23360667-b808-8068-9326-d27695093dc4" class="bulleted-list"><li style="list-style-type:disc">Location type: &quot;Multi-region&quot; (match your storage bucket)</li></ul><figure id="23360667-b808-8075-937a-f3ff907fb88d" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2010.png"><img style="width:576px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2010.png"/></a></figure><p id="23360667-b808-805d-a28f-d06f56f9626f" class=""><strong>Step 4: Connect your data store</strong></p><ul id="23360667-b808-8012-aab7-f4bf17334845" class="bulleted-list"><li style="list-style-type:disc">After creating the agent, you&#x27;ll be prompted to add data</li></ul><ul id="23360667-b808-80a0-90c4-f68811c7aa78" class="bulleted-list"><li style="list-style-type:disc">Click <strong>Create Data Store</strong></li></ul><ul id="23360667-b808-80a9-97ac-efadd99afd81" class="bulleted-list"><li style="list-style-type:disc">Select <strong>Cloud Storage</strong> as your data source</li></ul><figure id="23360667-b808-8065-852a-f4d1b03291b2" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2011.png"><img style="width:3432px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2011.png"/></a></figure><ul id="23360667-b808-80fe-8119-c0a3320c58d2" class="bulleted-list"><li style="list-style-type:disc">Click <strong>Browse</strong> and select the bucket you created earlier</li></ul><figure id="23360667-b808-8084-be6e-f71edadafef2" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2012.png"><img style="width:3378px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2012.png"/></a></figure><ul id="23360667-b808-80cd-8c37-d020fe953e1c" class="bulleted-list"><li style="list-style-type:disc">Select your bucket and click <strong>Continue</strong></li></ul><ul id="23360667-b808-80b8-9729-f5556c65808f" class="bulleted-list"><li style="list-style-type:disc">Give your data store a name (e.g., &quot;MyDataStore&quot;) and click <strong>Create</strong></li></ul><ul id="23360667-b808-8084-ba2b-efbde230a9b0" class="bulleted-list"><li style="list-style-type:disc">On the data page, click <strong>Create</strong> again to finalize</li></ul><figure id="23360667-b808-807f-b35a-e3cd1f7706c3" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2013.png"><img style="width:3442px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2013.png"/></a></figure><p id="23360667-b808-8069-b23e-d2f9e55ef350" class=""><strong>Step 5: App</strong></p><ul id="23460667-b808-8092-b21c-d5b6e887a5a4" class="bulleted-list"><li style="list-style-type:disc">Click on ‘<strong>Create</strong>’.</li></ul><ul id="23460667-b808-8027-adf3-e7ffc62a32de" class="bulleted-list"><li style="list-style-type:disc"><strong>Congratulations! You&#x27;ve created your AI agent.</strong></li></ul><ul id="23460667-b808-8044-83cb-c88fbf1e3208" class="bulleted-list"><li style="list-style-type:disc">Click on your new app to open it.</li></ul><figure id="23360667-b808-8053-bfde-daa69e2300fe" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2014.png"><img style="width:3422px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2014.png"/></a></figure><p id="23460667-b808-8085-9e53-fc18467e0ed8" class=""><strong>Connect your data store tool</strong></p><ul id="23460667-b808-80d1-85db-e11dd179c533" class="bulleted-list"><li style="list-style-type:disc">Scroll down to the <strong>Data store</strong> section</li></ul><ul id="23460667-b808-80d1-89e3-ea0991e53e35" class="bulleted-list"><li style="list-style-type:disc">Configure the tool with these settings:</li></ul><ul id="23460667-b808-80fa-b9eb-e52df00fce88" class="bulleted-list"><li style="list-style-type:disc"><strong>Tool name:</strong>  ******</li></ul><ul id="23460667-b808-801f-b722-ee71c5537713" class="bulleted-list"><li style="list-style-type:disc"><strong>Type:</strong> Data store</li></ul><ul id="23460667-b808-80ef-bc98-c0e20d9a4be8" class="bulleted-list"><li style="list-style-type:disc"><strong>Description:</strong> Use this tool if user&#x27;s request contains a location that doesn&#x27;t exist</li></ul><figure id="23460667-b808-80c0-8fda-cc8a394e109c" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2015.png"><img style="width:480px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2015.png"/></a></figure><ul id="23460667-b808-80db-86cf-cab0a4a99910" class="bulleted-list"><li style="list-style-type:disc">Add your data store from the dropdown menu</li></ul><ul id="23460667-b808-8016-a020-e8b5c3aa00e1" class="bulleted-list"><li style="list-style-type:disc">Click <strong>Save</strong> to complete the configuration</li></ul><p id="23360667-b808-80cd-9d32-d254de4c0e66" class=""><strong>Step 6: Configure your agent&#x27;s behavior</strong></p><ul id="23460667-b808-8093-ba63-f36c9a3a77c9" class="bulleted-list"><li style="list-style-type:disc">In the left sidebar, select <strong>Playbook</strong></li></ul><figure id="23360667-b808-802d-bb34-ff72e9b58bc2" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2016.png"><img style="width:709.9786376953125px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2016.png"/></a></figure><ul id="23360667-b808-807d-8c96-d6f14dc33da3" class="bulleted-list"><li style="list-style-type:disc">Choose <strong>Routine</strong> to set up your agent&#x27;s behavior</li></ul><ul id="23360667-b808-80b3-a586-d456a3358dc5" class="bulleted-list"><li style="list-style-type:disc">Configure your agent with the following settings:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23360667-b808-80c3-8b81-d8f6a229c399" class="code"><code class="language-JavaScript">Prompt:
+
+You are an experienced Google recruiter chatbot, helping students and job seekers. 
+When a user asks for job or HR info, answer with accurate, up-to-date details 
+about roles, departments, or contacts at Google, based on pre-trained company
+data. Always be clear, friendly, and guide users to application steps or 
+further resources if needed.</code></pre><p id="23360667-b808-8086-882b-c4007487788f" class="">and</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23360667-b808-80da-8713-d675484056cf" class="code"><code class="language-JavaScript">Instructions:
+
+- You are a helpful and experienced Google recruiter chatbot. 
+- When users ask for job or HR information, answer with accurate details about 
+roles, departments, or contacts at Google.
+- Use your latest pre-trained data as well as ${TOOL: sampleTool} and 
+${PLAYBOOK: samplePlaybook} when needed. 
+- Always communicate clearly, supportively, and guide users to application 
+steps or further official resources as appropriate. 
+- Start with a friendly greeting, clarify requests, and provide detailed, 
+actionable responses.</code></pre><figure id="23360667-b808-809c-a592-e20cd3d64187" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2017.png"><img style="width:2602px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2017.png"/></a></figure><p id="23360667-b808-800d-a389-f4675e2e4788" class=""><strong>Step 7: Finalize your agent setup</strong></p><ul id="23360667-b808-8013-ae6b-e1a4dfcf8a57" class="bulleted-list"><li style="list-style-type:disc">Click <strong>Add data stores</strong> to ensure your agent can access the information</li></ul><figure id="23360667-b808-80c4-8a34-d1d81e236127" class="image"><a href="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2018.png"><img style="width:709.9928588867188px" src="How%20to%20Build%20a%20Chatbot%20on%20Google%20Cloud%2023360667b808802fb9d1d941ab30125a/image%2018.png"/></a></figure><h1 id="23360667-b808-80b1-8359-f1e80dc33f10" class="">4. Testing Your Agent</h1><p id="23360667-b808-806b-8e44-d2a5370dc0ad" class="">Once your agent is configured, you can test it by:</p><ul id="23360667-b808-805e-8b29-d38c2f9e1e76" class="bulleted-list"><li style="list-style-type:disc">Clicking on the <strong>Test Agent</strong> tab in the Dialogflow interface</li></ul><ul id="23360667-b808-803d-b4f4-d9764912b1e4" class="bulleted-list"><li style="list-style-type:disc">Typing sample questions related to your data</li></ul><ul id="23360667-b808-8079-aa37-d1e522dd0418" class="bulleted-list"><li style="list-style-type:disc">Verifying that responses contain accurate information from your data store</li></ul><h1 id="23360667-b808-8019-b109-f8d8b1c1d806" class="">5. Next Steps</h1><p id="23360667-b808-80e6-a4b8-f07e9464dc4f" class="">To further enhance your AI agent:</p><ul id="23360667-b808-8031-a44a-fa034854d937" class="bulleted-list"><li style="list-style-type:disc">Follow this </li></ul><figure id="23360667-b808-80c7-bb41-f425072852ac" class="link-to-page"><a href="https://www.notion.so/Make-your-AI-agent-live-Deploy-an-AI-chatbot-on-your-website-1-23360667b80880c7bb41f425072852ac?pvs=21">Make your AI agent live: Deploy an AI chatbot on your website (1)</a></figure><h1 id="23360667-b808-8091-8001-c55ca1809230" class="">6. Conclusion</h1><p id="23360667-b808-8018-959f-d8efea7307ca" class=""><strong>Congratulations! You&#x27;ve successfully built an AI agent using Google Cloud&#x27;s Vertex AI. This agent can now answer questions based on the data you provided, delivering a personalized user experience.</strong></p><p id="23360667-b808-80fd-95a3-cc7bf2eb0d13" class="">Feel free to experiment with different configurations and data sources to create even more powerful AI solutions.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

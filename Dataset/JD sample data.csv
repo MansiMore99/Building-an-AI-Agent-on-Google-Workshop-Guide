@@ -1,0 +1,11 @@
+Job Title,Department,Location,Summary,Key Responsibilities,Requirements,Salary
+Frontend Developer,Engineering,"San Francisco, CA (Hybrid)","Develop and maintain web user interfaces in React.","Reusable code, Optimize UI, Collaborate with designers, Integrate REST APIs","JavaScript/React, CSS preprocessors, REST APIs","$100,000-$120,000"
+Backend Developer,Engineering,"Austin, TX (Remote available)","Design and maintain server-side applications in Node.js.","Develop APIs, Maintain apps, Security & data protection","Node.js, Express, MongoDB, PostgreSQL","$110,000-$135,000"
+DevOps Engineer,Infrastructure,"Seattle, WA","Automate deployment, monitoring and manage cloud infrastructure.","CI/CD pipelines, AWS management, Monitor systems","AWS cert, Docker, Kubernetes, Git","$120,000-$140,000"
+Data Scientist,Data & Analytics,"New York, NY (Hybrid)","Analyze data and build predictive models.","Data mining, Cleansing, Feature engineering, ML modeling","Python, Pandas, Stats, Visualization","$120,000-$150,000"
+Machine Learning Engineer,AI and ML,"Boston, MA (Remote friendly)","Develop, deploy, and optimize ML models.","Build/serve ML APIs, Monitor models, Collaborate with data scientists","TensorFlow/PyTorch, Cloud ML","$125,000-$160,000"
+QA Automation Engineer,Quality Assurance,"Dallas, TX","Automate software quality testing.","Write scripts, Track bugs, Collaborate with devs","Selenium/Appium, CI/CD, Automation","$90,000-$110,000"
+Cloud Architect,IT Infrastructure,"Chicago, IL","Design/manage cloud infrastructure with AWS/Azure.","Architecture, Cost optimization, Guide teams","5+ years Cloud, AWS/Azure cert","$145,000-$170,000"
+Product Manager - Tech,Product Management,"New York, NY (On-site/Hybrid)","Lead product vision and execution for tech.","Define roadmap, Collaborate, Customer advocacy","SaaS PM, Technical background","$130,000-$155,000"
+UI/UX Designer,Design,"Los Angeles, CA","Design web/mobile user experiences.","Wireframes/prototypes, User research, Work with devs","Figma/Sketch/XD, Portfolio","$95,000-$115,000"
+Cybersecurity Analyst,Security,"Remote (US only)","Monitor security, respond to incidents.","Vulnerability assessment, Breaches, Compliance docs","Cybersecurity, SIEM tools, Incident response","$110,000-$135,000"
